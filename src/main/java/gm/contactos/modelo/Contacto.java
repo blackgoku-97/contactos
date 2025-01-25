@@ -1,9 +1,6 @@
 package gm.contactos.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -17,32 +14,16 @@ public class Contacto {
     private String celular;
     private String email;
 
-    public Integer getIdContacto() {
-        return idContacto;
-    }
-
     public void setIdContacto(Integer idContacto) {
         this.idContacto = idContacto;
-    }
-
-    public String getNombre() {
-        return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(String email) {

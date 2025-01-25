@@ -4,7 +4,6 @@ import gm.contactos.modelo.Contacto;
 import gm.contactos.servicio.ContactoServicio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,11 @@ public class ContactoControlador {
     private static final Logger logger =
             LoggerFactory.getLogger(ContactoControlador.class);
 
-    @Autowired
-    private ContactoServicio contactoServicio;
+    private final ContactoServicio contactoServicio;
+
+    public ContactoControlador(ContactoServicio contactoServicio) {
+        this.contactoServicio = contactoServicio;
+    }
 
     @GetMapping("/")
     public String iniciar(ModelMap modelo) {
@@ -38,7 +40,7 @@ public class ContactoControlador {
 
     @PostMapping("/agregar")
     public String agregar(@ModelAttribute("contactoForma") Contacto contacto) {
-        logger.info("Contacto a agregar: " + contacto);
+        logger.info("Contacto a agregar: {}", contacto);
         contactoServicio.guardarContacto(contacto);
         return "redirect:/";
     }
@@ -47,14 +49,14 @@ public class ContactoControlador {
     public String mostrarEditar(@PathVariable(value = "id") int idContacto,
                                 ModelMap modelo) {
         Contacto contacto = contactoServicio.buscarContactoPorId(idContacto);
-        logger.info("Contacto a editar (mostrar): " + contacto);
+        logger.info("Contacto a editar (mostrar): {}", contacto);
         modelo.put("contacto", contacto);
         return "editar";
     }
 
     @PostMapping("/editar")
     public String editar(@ModelAttribute("contacto") Contacto contacto) {
-        logger.info("Contacto a guardar (editar): " + contacto);
+        logger.info("Contacto a guardar (editar): {}", contacto);
         contactoServicio.guardarContacto(contacto);
         return "redirect:/";
     }

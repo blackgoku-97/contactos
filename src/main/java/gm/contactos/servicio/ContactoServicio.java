@@ -2,7 +2,6 @@ package gm.contactos.servicio;
 
 import gm.contactos.modelo.Contacto;
 import gm.contactos.repositorio.ContactoRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +9,11 @@ import java.util.List;
 @Service
 public class ContactoServicio implements IContactoServicio {
 
-    @Autowired
-    private ContactoRepositorio contactoRepositorio;
+    private final ContactoRepositorio contactoRepositorio;
+
+    public ContactoServicio(ContactoRepositorio contactoRepositorio) {
+        this.contactoRepositorio = contactoRepositorio;
+    }
 
     @Override
     public List<Contacto> listarContactos() {
@@ -20,8 +22,7 @@ public class ContactoServicio implements IContactoServicio {
 
     @Override
     public Contacto buscarContactoPorId(Integer idContacto) {
-        Contacto contacto = contactoRepositorio.findById(idContacto).orElse(null);
-        return contacto;
+        return contactoRepositorio.findById(idContacto).orElse(null);
     }
 
     @Override

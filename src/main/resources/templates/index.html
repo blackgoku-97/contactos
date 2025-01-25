@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragmentos/cabecero::cabecero-seccion('Inicio')}">
+    <title>Inicio</title>
 </head>
 <body>
     <!-- Div es del menu de navegacion -->
-    <div th:replace="~{fragmentos/navegacion::navegacion-seccion}"/>
+    <div th:replace="~{fragmentos/navegacion::navegacion-seccion}"></div>
 
     <!-- Div para desplegar la tabla -->
     <div class="container">
@@ -42,6 +43,6 @@
         </div>
     </div>
 
-    <div th:replace="~{fragmentos/pie-pagina::pie-pagina-seccion}"/>
+    <div th:replace="~{fragmentos/pie-pagina::pie-pagina-seccion}"></div>
 </body>
 </html>
