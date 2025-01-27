@@ -5,11 +5,5 @@
       "source": "target/contactos-0.0.1-SNAPSHOT.jar",
       "destination": "/contactos"
     }
-  ],
-  "routes": [
-    {
-      "source": "/",
-      "destination": "/contactos"
-    }
   ]
 }
