@@ -2,8 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "target/contactos-0.0.1-SNAPSHOT.jar",
-      "use": "@vercel/java"
+      "source": "target/contactos-0.0.1-SNAPSHOT.jar",
+      "destination": "/contactos"
+    }
+  ],
+  "routes": [
+    {
+      "source": "/",
+      "destination": "/contactos"
     }
   ]
 }
